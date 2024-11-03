@@ -8,7 +8,8 @@ const nextConfig = {
         name: "sharedComponents",
         filename: "static/chunks/remoteEntry.js",
         exposes: {
-          "./button": "./components/ButtonFinal.tsx",
+          "./header": "./components/organisms/Header.tsx",
+          "./general-menu": "./components/atoms/GeneralMenu.tsx",
         },
       })
     );
