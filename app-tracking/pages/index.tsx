@@ -1,19 +1,54 @@
 import styles from "@/styles/Home.module.css";
 import dynamic from "next/dynamic";
 
-//
-const Button = dynamic(() => import("sharedComponents/button"), {
+// Components
+const Header = dynamic(() => import("sharedComponents/header"), {
   ssr: false,
-  suspense: true,
+});
+const GeneralMenu = dynamic(() => import("sharedComponents/general-menu"), {
+  ssr: false,
 });
 
+// Styles
+import { StyledContainerGeneralMenuMobile } from "../styles/pages/styles";
 export default function Home() {
-  const handleClick = () => {
-    console.log("Click");
-  };
+  const mockTerminals = [
+    {
+      code: 1,
+      label: "01-BOG",
+    },
+    {
+      code: 2,
+      label: "02-CAL",
+    },
+    {
+      code: 3,
+      label: "01-BOG",
+    },
+    {
+      code: 1,
+      label: "01-BOG",
+    },
+    {
+      code: 1,
+      label: "01-BOG",
+    },
+    {
+      code: 1,
+      label: "01-BOG",
+    },
+    {
+      code: 1,
+      label: "01-BOG",
+    },
+  ];
+
   return (
     <main>
-      <Button onClick={handleClick} />
+      <Header personName={"Jhon Doe"} terminals={mockTerminals} />
+      <StyledContainerGeneralMenuMobile>
+        <GeneralMenu />
+      </StyledContainerGeneralMenuMobile>
     </main>
   );
 }
