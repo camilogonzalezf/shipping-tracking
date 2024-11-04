@@ -9,3 +9,14 @@ export const StyledContainerGeneralMenuMobile = styled.div`
     justify-content: end;
   }
 `;
+
+export const StyledContainerInformation = styled.div`
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    padding: 0 10px;
+  }
+`;

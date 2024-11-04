@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import { IconButton, TextField } from "@mui/material";
+import React from "react";
+import { IconButton } from "@mui/material";
 
 /* Styles */
 import {
@@ -7,7 +7,7 @@ import {
   StyledTextFieldSearchFieldHeader,
   StyledContainerSearchTextFieldHeader,
   StyledContainerFindIconHeader,
-} from "../styles";
+} from "../../styles/components/styles";
 
 /* Icons */
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
