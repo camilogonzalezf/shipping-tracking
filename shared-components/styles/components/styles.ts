@@ -42,6 +42,7 @@ export const StyledContainerFirstPartHeader = styled.div`
 `;
 
 export const StyledContainerBurguer = styled.div`
+  cursor: pointer;
   @media (max-width: 600px) {
     display: none;
   }
@@ -54,6 +55,7 @@ export const StyledContainerLogo = styled.div`
   margin-left: 24px;
   font-size: 14px;
   color: #0000008a;
+  cursor: pointer;
   @media (max-width: 600px) {
     flex-direction: column;
   }
@@ -240,7 +242,7 @@ export const StyledErrorMessage = styled(ErrorMessage)`
 export const StyledTrackingInformation = styled.div`
   height: 100%;
   width: 100%;
-  padding: 30px 88px 10px 88px;
+  padding: 30px 0px 10px 0px;
 
   @media (max-width: 600px) {
     padding: 30px 0px 10px 0px;
@@ -345,4 +347,107 @@ export const StyledSimpleButton = styled(Button)<{
   color: #ffffff;
   border-radius: 20px;
   font-size: 12px;
+`;
+
+export const StyledLoader = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  z-index: 50;
+`;
+
+export const SpinnerContainer = styled("div")`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StyledContainerTrackingTimeLine = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  padding: 20px 0 20px 0;
+  position: relative;
+  overflow-y: hidden;
+`;
+
+export const StyledContainerTrackingTimeLineIntern = styled.div`
+  width: fit-content;
+  display: flex;
+  padding: 20px 0 20px 20px;
+  position: relative;
+`;
+
+export const StyledContainerONlyTracking = styled.div<{ index: number }>`
+  position: relative;
+  z-index: 10;
+  margin-left: ${({ index }) => (index === 0 ? "0px" : "150px")};
+`;
+
+export const StyledContainerIcon = styled.div`
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #003c82;
+  border-radius: 100%;
+`;
+
+export const StyledBackLine = styled.div`
+  background: #003c82;
+  width: calc(100% - 50px);
+  height: 1px;
+  position: absolute;
+  top: 25%;
+  left: 50px;
+  z-index: 0;
+`;
+
+export const StyledVerticalLine = styled.div`
+  background: #e0e6e9;
+  width: 2px;
+  height: 25px;
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  z-index: 0;
+`;
+
+export const StyledVerticalCircle = styled.div`
+  background: #e0e6e9;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 80px;
+  left: 43%;
+  border-radius: 100%;
+  z-index: 0;
+`;
+
+export const StyledContainerTextTimeLine = styled.div`
+  width: 150px;
+  position: absolute;
+  top: 90px;
+  left: -50px;
+  z-index: 0;
+  text-align: center;
+`;
+
+export const StyledDate = styled.p`
+  font-size: 12px;
+  color: #707070;
+`;
+
+export const StyledState = styled.p`
+  font-size: 12px;
+  color: #707070;
+  font-weight: 600;
 `;

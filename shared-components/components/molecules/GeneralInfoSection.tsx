@@ -25,7 +25,15 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LinkOutlinedIcon from "@mui/icons-material/LinkOutlined";
 import ErrorIcon from "@mui/icons-material/Error";
 
-const GeneralInfoSection = () => {
+/* Interface */
+import { TrackingInformationInterface } from "@/interfaces/components";
+
+const GeneralInfoSection: React.FC<TrackingInformationInterface> = ({
+  trackingCode,
+  unities,
+  macroState,
+  trackingState,
+}) => {
   const [showInputSearch, setShowInputSearch] = useState(false);
   const handleSearchClick = (event: any) => {
     setShowInputSearch(true);
@@ -67,7 +75,7 @@ const GeneralInfoSection = () => {
           Guía nivel 1:
           <StyledSimpleTextInfo>
             {" "}
-            26458239751
+            {trackingCode}
             <IconButton
               edge="end"
               color="inherit"
@@ -90,7 +98,7 @@ const GeneralInfoSection = () => {
         </StyledContainerSubtitle>
         <StyledContainerSubtitle>
           Unidades:
-          <StyledSimpleTextInfo>3</StyledSimpleTextInfo>
+          <StyledSimpleTextInfo>{unities}</StyledSimpleTextInfo>
         </StyledContainerSubtitle>
       </div>
       <StyledContainerDigitalGuideSection>
@@ -105,10 +113,10 @@ const GeneralInfoSection = () => {
           </StyledContainerSubtitlesDigitalGuideInfo>
           <StyledContainerDescriptionsDigitalGuideInfo>
             <StyledDescriptionDigitalGuideInfo>
-              Abierta
+              {macroState}
             </StyledDescriptionDigitalGuideInfo>
             <StyledDescriptionDigitalGuideInfo>
-              Entrega parcial
+              {trackingState}
               <ErrorIcon sx={{ fill: "#EE5A31", width: 18, height: 18 }} />
             </StyledDescriptionDigitalGuideInfo>
           </StyledContainerDescriptionsDigitalGuideInfo>

@@ -5,10 +5,23 @@ import GeneralInfoSection from "../molecules/GeneralInfoSection";
 /* Styles */
 import { StyledTrackingInformation } from "@/styles/components/styles";
 
-const TrackingInformation = () => {
+/* Interfcae */
+import { TrackingInformationInterface } from "@/interfaces/components";
+
+const TrackingInformation: React.FC<TrackingInformationInterface> = ({
+  trackingCode,
+  unities,
+  macroState,
+  trackingState,
+}) => {
   return (
     <StyledTrackingInformation>
-      <GeneralInfoSection />
+      <GeneralInfoSection
+        trackingCode={trackingCode}
+        unities={unities}
+        macroState={macroState}
+        trackingState={trackingState}
+      />
     </StyledTrackingInformation>
   );
 };

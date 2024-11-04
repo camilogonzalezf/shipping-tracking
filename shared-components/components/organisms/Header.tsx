@@ -26,12 +26,16 @@ import Logo from "../icons/Logo";
 /* Interfaces */
 import { HeaderInterface } from "@/interfaces/components";
 
-const Header: React.FC<HeaderInterface> = ({ personName, terminals }) => {
+const Header: React.FC<HeaderInterface> = ({
+  personName,
+  terminals,
+  onRouteIndexPage,
+}) => {
   const [showTextField, setShowTextField] = useState(false);
   return (
     <StyledAppBar position="static" aria-label="Cabecera principal">
       <StyledContainer maxWidth="xl">
-        <StyledContainerFirstPartHeader>
+        <StyledContainerFirstPartHeader onClick={() => onRouteIndexPage()}>
           <StyledContainerBurguer>
             <Burguer />
           </StyledContainerBurguer>
