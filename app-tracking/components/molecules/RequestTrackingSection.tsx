@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import * as Yup from "yup";
 
+/* Hooks */
+import { useRouter } from "next/router";
+
 /* Shared Components */
 const CustomButton = dynamic(() => import("sharedComponents/custom-button"), {
   ssr: false,
@@ -27,6 +30,8 @@ import QrCodeIcon from "@mui/icons-material/QrCode";
 import EastIcon from "@mui/icons-material/East";
 
 const RequestTrackingSection = () => {
+  const router = useRouter();
+
   const GUIDE_BUTTON_ID = 1;
   const LABEL_BUTTON_ID = 2;
 
@@ -41,7 +46,7 @@ const RequestTrackingSection = () => {
   });
 
   const handleSubmit = (values: { alphanumeric: string }) => {
-    // console.log(values);
+    router.push(`/informacion-general/${values.alphanumeric}`);
   };
 
   return (

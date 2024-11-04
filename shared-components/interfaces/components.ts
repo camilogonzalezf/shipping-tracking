@@ -10,6 +10,7 @@ export interface TerminalsInterface {
 export interface HeaderInterface {
   personName: string;
   terminals: Terminal[];
+  onRouteIndexPage: () => void;
 }
 
 export interface SearchFieldHeaderInterface {
@@ -32,4 +33,23 @@ export interface KeyBoardEnterFormInterface {
   handleSubmit: (value: string) => void;
   placeHolder: string;
   disabled?: boolean;
+}
+
+export interface TrackingInformationInterface {
+  trackingCode: string;
+  unities: any;
+  macroState: any;
+  trackingState: string;
+}
+
+interface TrackingTimeLineObjectInterface {
+  codigo: string | null;
+  descripcion: string | null;
+  fecha: string | null;
+  hora: string | null;
+  internacional: boolean | null;
+}
+
+export interface TrackingTimeLineInterface {
+  trackingStates: TrackingTimeLineObjectInterface[] | [];
 }

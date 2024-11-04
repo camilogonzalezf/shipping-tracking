@@ -20,3 +20,10 @@ export const StyledContainerInformation = styled.div`
     padding: 0 10px;
   }
 `;
+
+export const StyledContainerTrackingInformation = styled.div`
+  padding: 0 50px 0 50px;
+  @media (max-width: 600px) {
+    padding: 0 10px;
+  }
+`;

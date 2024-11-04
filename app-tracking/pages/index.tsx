@@ -1,5 +1,9 @@
 import dynamic from "next/dynamic";
 
+/* Hooks */
+import { useRouter } from "next/router";
+import useGetTerminalsList from "@/hooks/useGetTerminalsList";
+
 /* Local Components */
 const ContainerInfo = dynamic(
   () => import("../components/organisms/ContainerInfo"),
@@ -22,48 +26,38 @@ const Header = dynamic(() => import("sharedComponents/header"), {
 const GeneralMenu = dynamic(() => import("sharedComponents/general-menu"), {
   ssr: false,
 });
+const Loader = dynamic(() => import("sharedComponents/loader"), {
+  ssr: false,
+});
 
 // Styles
 import { StyledContainerGeneralMenuMobile } from "../styles/pages/styles";
+import { Fragment } from "react";
 export default function Home() {
-  const mockTerminals = [
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 2,
-      label: "02-CAL",
-    },
-    {
-      code: 3,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-  ];
+  const router = useRouter();
+  const { loadingTerminals, terminalsListConfig } = useGetTerminalsList();
+
+  const handleReturnIndexPage = () => {
+    router.push(`/`);
+  };
 
   return (
     <main>
-      <Header personName={"Jhon Doe"} terminals={mockTerminals} />
-      <StyledContainerGeneralMenuMobile>
-        <GeneralMenu />
-      </StyledContainerGeneralMenuMobile>
-      <ContainerInfo childComponent={<RequestTrackingSection />} />
+      {loadingTerminals ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <Header
+            personName={"Jhon Doe"}
+            terminals={terminalsListConfig}
+            onRouteIndexPage={handleReturnIndexPage}
+          />
+          <StyledContainerGeneralMenuMobile>
+            <GeneralMenu />
+          </StyledContainerGeneralMenuMobile>
+          <ContainerInfo childComponent={<RequestTrackingSection />} />
+        </Fragment>
+      )}
     </main>
   );
 }

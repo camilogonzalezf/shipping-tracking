@@ -20,3 +20,12 @@ declare module "sharedComponents/tracking-info" {
   const TrackingInformation: React.ComponentType<any>;
   export default TrackingInformation;
 }
+
+declare module "sharedComponents/loader" {
+  const Loader: React.ComponentType<any>;
+  export default Loader;
+}
+declare module "sharedComponents/tracking-time-line" {
+  const TrackingTimeLine: React.ComponentType<any>;
+  export default TrackingTimeLine;
+}

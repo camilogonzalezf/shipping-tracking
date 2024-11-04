@@ -1,8 +1,16 @@
+import React, { useState, useEffect, Fragment } from "react";
+
 import dynamic from "next/dynamic";
 
+/* Hooks */
+import { useRouter } from "next/router";
+import useGetTerminalsList from "@/hooks/useGetTerminalsList";
+import useGetTrackingInfo from "@/hooks/useGetTrackingInfo";
+import useObtainTrackingState from "@/hooks/useObtainTrackingState";
+
 /* Local Components */
-const ContainerInfo = dynamic(
-  () => import("../../../components/organisms/ContainerInfo"),
+const ContainerTrackingInfo = dynamic(
+  () => import("../../../components/organisms/ContainerTrackingInfo"),
   {
     ssr: false,
   }
@@ -15,6 +23,15 @@ const Header = dynamic(() => import("sharedComponents/header"), {
 const GeneralMenu = dynamic(() => import("sharedComponents/general-menu"), {
   ssr: false,
 });
+const Loader = dynamic(() => import("sharedComponents/loader"), {
+  ssr: false,
+});
+const TrackingTimeLine = dynamic(
+  () => import("sharedComponents/tracking-time-line"),
+  {
+    ssr: false,
+  }
+);
 
 const TrackingInformation = dynamic(
   () => import("sharedComponents/tracking-info"),
@@ -27,44 +44,75 @@ const TrackingInformation = dynamic(
 import { StyledContainerGeneralMenuMobile } from "../../../styles/pages/styles";
 
 export default function Home() {
-  const mockTerminals = [
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 2,
-      label: "02-CAL",
-    },
-    {
-      code: 3,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-  ];
+  const router = useRouter();
+  const [trackingStateConfig, setTrackingStateConfig] = useState("");
+
+  const { loadingTerminals, terminalsListConfig } = useGetTerminalsList();
+  const { trackingInfo, loadingTrackingInfo, handleGetTrackingId } =
+    useGetTrackingInfo();
+
+  const { trackingState, loadingTrackingState, handleGetTrackingState } =
+    useObtainTrackingState();
+
+  const handleReturnIndexPage = () => {
+    router.push(`/`);
+  };
+
+  useEffect(() => {
+    if (router?.query?.code) {
+      handleGetTrackingId(router?.query?.code);
+      const params = [router?.query?.code];
+      handleGetTrackingState(params);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router]);
+
+  useEffect(() => {
+    if (trackingState?.[0]?.estado?.length) {
+      const states = trackingState?.[0]?.estado;
+      const numberStates = states?.length;
+      const messageLastTrackingState = states?.[numberStates - 1]?.descripcion;
+      setTrackingStateConfig(messageLastTrackingState);
+    }
+  }, [trackingState]);
+
+  const childComplete = () => {
+    return (
+      <Fragment>
+        <TrackingInformation
+          trackingCode={
+            trackingInfo?.guia ? trackingInfo?.guia : "Sin información"
+          }
+          unities={
+            trackingInfo?.total_unidades_declarado
+              ? trackingInfo?.total_unidades_declarado
+              : "Sin información"
+          }
+          macroState={"Abierta"}
+          trackingState={trackingStateConfig}
+        />
+        <TrackingTimeLine trackingStates={trackingState?.[0]?.estado} />
+      </Fragment>
+    );
+  };
 
   return (
     <main>
-      <Header personName={"Jhon Doe"} terminals={mockTerminals} />
-      <StyledContainerGeneralMenuMobile>
-        <GeneralMenu />
-      </StyledContainerGeneralMenuMobile>
-      <ContainerInfo childComponent={<TrackingInformation />} />
+      {loadingTerminals || loadingTrackingInfo || loadingTrackingState ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <Header
+            personName={"Jhon Doe"}
+            terminals={terminalsListConfig}
+            onRouteIndexPage={handleReturnIndexPage}
+          />
+          <StyledContainerGeneralMenuMobile>
+            <GeneralMenu />
+          </StyledContainerGeneralMenuMobile>
+          <ContainerTrackingInfo childComponent={childComplete()} />
+        </Fragment>
+      )}
     </main>
   );
 }

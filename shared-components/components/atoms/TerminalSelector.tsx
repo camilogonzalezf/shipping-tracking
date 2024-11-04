@@ -16,7 +16,7 @@ import ArrowDown from "../icons/ArrowDown";
 import { TerminalsInterface, Terminal } from "@/interfaces/components";
 
 const TerminalSelector: React.FC<TerminalsInterface> = ({ terminals }) => {
-  const [selectedOption, setSelectedOption] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(1);
   const [showOptions, setShowOptions] = useState(false);
 
   return (
