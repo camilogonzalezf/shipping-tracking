@@ -17,7 +17,7 @@ import {
   StyledPersonName,
   StyledContainerBurguer,
   StyledContainerGeneralMenu,
-} from "../styles";
+} from "../../styles/components/styles";
 
 /* Icons */
 import Burguer from "../icons/Burguer";

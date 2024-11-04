@@ -7,7 +7,7 @@ import {
   StyledTerminalSelect,
   StyledContainerSelectedItem,
   StyledTerminalSelectOption,
-} from "../styles";
+} from "../../styles/components/styles";
 
 /* icons */
 import ArrowDown from "../icons/ArrowDown";

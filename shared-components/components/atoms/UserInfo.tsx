@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { IconButton, Menu } from "@mui/material";
 
 /* Styles */
-import { StyledMenuItem, StyledLabelMenuItem } from "../styles";
+import {
+  StyledMenuItem,
+  StyledLabelMenuItem,
+} from "../../styles/components/styles";
 
 /* Icons*/
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";

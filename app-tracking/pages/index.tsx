@@ -1,7 +1,21 @@
-import styles from "@/styles/Home.module.css";
 import dynamic from "next/dynamic";
 
-// Components
+/* Local Components */
+const ContainerInfo = dynamic(
+  () => import("../components/organisms/ContainerInfo"),
+  {
+    ssr: false,
+  }
+);
+
+const RequestTrackingSection = dynamic(
+  () => import("../components/molecules/RequestTrackingSection"),
+  {
+    ssr: false,
+  }
+);
+
+/* Shared Components */
 const Header = dynamic(() => import("sharedComponents/header"), {
   ssr: false,
 });
@@ -49,6 +63,7 @@ export default function Home() {
       <StyledContainerGeneralMenuMobile>
         <GeneralMenu />
       </StyledContainerGeneralMenuMobile>
+      <ContainerInfo childComponent={<RequestTrackingSection />} />
     </main>
   );
 }

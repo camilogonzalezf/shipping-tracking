@@ -10,6 +10,8 @@ const nextConfig = {
         exposes: {
           "./header": "./components/organisms/Header.tsx",
           "./general-menu": "./components/atoms/GeneralMenu.tsx",
+          "./custom-button": "./components/atoms/CustomButton.tsx",
+          "./keyboard-form": "./components/molecules/KeyBoardEnterForm.tsx",
         },
       })
     );

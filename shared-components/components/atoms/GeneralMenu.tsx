@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { IconButton, Menu, Grid, MenuItem } from "@mui/material";
+import { IconButton, Menu, Grid } from "@mui/material";
 
 /* Styles */
 import {
   StyledMenuItemGeneralMenu,
   StyledLabelMenuItemGeneralMenu,
-} from "../styles";
+} from "../../styles/components/styles";
 
 /* Icons*/
 import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";

@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
-import { Container, Toolbar, MenuItem, TextField, AppBar } from "@mui/material";
+import {
+  Container,
+  Toolbar,
+  MenuItem,
+  TextField,
+  AppBar,
+  Button,
+} from "@mui/material";
+
+import { ErrorMessage } from "formik";
 
 export const StyledAppBar = styled(AppBar)`
   height: 64px;
@@ -181,4 +190,47 @@ export const StyledContainerGeneralMenu = styled.div`
   @media (max-width: 600px) {
     display: none;
   }
+`;
+
+export const StyledCustomButton = styled(Button)<{
+  isselected?: string;
+}>`
+  background: ${({ isselected }) =>
+    isselected === "true" ? "#0a6bb6" : "#0000000D"};
+  color: ${({ isselected }) => (isselected === "true" ? "#ffffff" : "#000000")};
+  border-radius: 20px;
+  width: 102px;
+  font-size: 14px;
+
+  @media (max-width: 600px) {
+    width: 45%;
+  }
+`;
+
+export const StyledTextFieldForm = styled(TextField)`
+  width: 224px;
+
+  & .MuiInputLabel-root {
+    font-size: 14px;
+    color: #757575;
+    top: -10px;
+  }
+
+  & .MuiFilledInput-input {
+    padding: 6px 10px 6px 10px;
+  }
+
+  & .MuiFilledInput-root {
+    border-radius: 50px;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+`;
+
+export const StyledErrorMessage = styled(ErrorMessage)`
+  position: absolute;
+  font-size: 10px;
+  color: red;
 `;
