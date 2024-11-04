@@ -53,6 +53,7 @@ const Header: React.FC<HeaderInterface> = ({ personName, terminals }) => {
           <SearchFieldHeader
             showTextField={showTextField}
             onSetShowTextField={setShowTextField}
+            hiddenMobile
           />
           <StyledContainerGeneralMenu>
             <GeneralMenu />

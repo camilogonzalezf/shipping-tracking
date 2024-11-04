@@ -14,6 +14,7 @@ export interface HeaderInterface {
 
 export interface SearchFieldHeaderInterface {
   showTextField: boolean;
+  hiddenMobile?: boolean;
   onSetShowTextField: (value: boolean) => void;
 }
 

@@ -15,3 +15,8 @@ declare module "sharedComponents/keyboard-form" {
   const KeyBoardForm: React.ComponentType<any>;
   export default KeyBoardForm;
 }
+
+declare module "sharedComponents/tracking-info" {
+  const TrackingInformation: React.ComponentType<any>;
+  export default TrackingInformation;
+}
