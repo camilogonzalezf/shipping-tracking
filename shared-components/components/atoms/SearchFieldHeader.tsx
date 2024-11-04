@@ -19,9 +19,10 @@ import { SearchFieldHeaderInterface } from "@/interfaces/components";
 const SearchFieldHeader: React.FC<SearchFieldHeaderInterface> = ({
   showTextField,
   onSetShowTextField,
+  hiddenMobile,
 }) => {
   return (
-    <StyledContainerSearchFieldHeader>
+    <StyledContainerSearchFieldHeader hiddenmobile={hiddenMobile}>
       {!showTextField ? (
         <IconButton
           aria-label="buscar"

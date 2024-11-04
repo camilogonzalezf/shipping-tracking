@@ -143,11 +143,13 @@ export const StyledLabelMenuItem = styled.label`
   color: #00000099;
 `;
 
-export const StyledContainerSearchFieldHeader = styled.div`
+export const StyledContainerSearchFieldHeader = styled.div<{
+  hiddenmobile?: boolean;
+}>`
   margin: 0 10px 0 30px;
 
   @media (max-width: 600px) {
-    display: none;
+    display: ${({ hiddenmobile }) => (hiddenmobile ? "none" : "block")};
   }
 `;
 
@@ -233,4 +235,114 @@ export const StyledErrorMessage = styled(ErrorMessage)`
   position: absolute;
   font-size: 10px;
   color: red;
+`;
+
+export const StyledTrackingInformation = styled.div`
+  height: 100%;
+  width: 100%;
+  padding: 30px 88px 10px 88px;
+
+  @media (max-width: 600px) {
+    padding: 30px 0px 10px 0px;
+  }
+`;
+
+export const StyledGeneralInfoSection = styled.article`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+export const StyledGeneralInfoSectionTitle = styled.h2`
+  color: #086bb5;
+  font-weight: 500;
+  margin-right: 20px;
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
+`;
+
+export const StyledContainerGeneralInfoSectionTitle = styled.div`
+  display: flex;
+  align-items: center;
+  height: 80px;
+`;
+
+export const StyledContainerSubtitle = styled.div`
+  display: flex;
+  color: #086bb5;
+  font-size: 18px;
+  font-weight: 500;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+`;
+
+export const StyledSimpleTextInfo = styled.label`
+  color: #212121;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 5px;
+  margin-top: 4px;
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
+`;
+
+export const StyledContainerDigitalGuideSection = styled.div`
+  display: flex;
+`;
+
+export const StyledContainerDigitalGuideInfo = styled.div`
+  display: flex;
+  align-items: end;
+  margin-left: 10px;
+  @media (max-width: 600px) {
+    margin-left: 0px;
+  }
+`;
+
+export const StyledContainerSubtitlesDigitalGuideInfo = styled.div`
+  text-align: right;
+  @media (max-width: 600px) {
+    font-size: 14px;
+    text-align: left;
+  }
+`;
+
+export const StyledSubtitleDigitalGuideInfo = styled.div`
+  color: #212121;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+`;
+
+export const StyledContainerDescriptionsDigitalGuideInfo = styled.div`
+  text-align: left;
+  margin-left: 13px;
+`;
+
+export const StyledDescriptionDigitalGuideInfo = styled.div`
+  display: flex;
+  color: #000000;
+  opacity: 0.54;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+`;
+
+export const StyledSimpleButton = styled(Button)<{
+  isselected?: string;
+}>`
+  background: #0a6bb6;
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 12px;
 `;

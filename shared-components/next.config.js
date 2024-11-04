@@ -9,9 +9,10 @@ const nextConfig = {
         filename: "static/chunks/remoteEntry.js",
         exposes: {
           "./header": "./components/organisms/Header.tsx",
+          "./tracking-info": "./components/organisms/TrackingInformation.tsx",
+          "./keyboard-form": "./components/molecules/KeyBoardEnterForm.tsx",
           "./general-menu": "./components/atoms/GeneralMenu.tsx",
           "./custom-button": "./components/atoms/CustomButton.tsx",
-          "./keyboard-form": "./components/molecules/KeyBoardEnterForm.tsx",
         },
       })
     );
