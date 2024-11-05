@@ -27,3 +27,32 @@ export const StyledContainerTrackingInformation = styled.div`
     padding: 0 10px;
   }
 `;
+
+export const StyledErrorContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const StyledErrorMessage = styled.h3`
+  color: #0a6bb6;
+  font-weight: 300;
+  margin-right: 10px;
+  margin-left: 10px;
+`;
+
+export const StyledErrorList = styled.ul`
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 0;
+  color: #666666;
+  margin-top: -10px;
+  padding-left: 35px;
+  li {
+    color: #666666;
+    margin-bottom: 8px;
+  }
+
+  li::marker {
+    color: #999999;
+  }
+`;

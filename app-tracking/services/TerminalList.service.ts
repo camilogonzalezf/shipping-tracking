@@ -28,6 +28,6 @@ export const getTerminalsList = async (
     }
   } catch (error: any) {
     onLoaded();
-    handleError(error);
+    handleError();
   }
 };

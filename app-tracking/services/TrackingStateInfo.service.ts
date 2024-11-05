@@ -30,6 +30,6 @@ export const obtainsTrackingState = async (
     }
   } catch (error: any) {
     onLoaded();
-    handleError(error);
+    handleError();
   }
 };

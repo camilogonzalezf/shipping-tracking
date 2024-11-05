@@ -47,18 +47,36 @@ const TrackingTabsInfo = dynamic(
 );
 
 // Styles
-import { StyledContainerGeneralMenuMobile } from "../../../styles/pages/styles";
+import {
+  StyledContainerGeneralMenuMobile,
+  StyledErrorMessage,
+  StyledErrorContainer,
+  StyledErrorList,
+} from "../../../styles/pages/styles";
+
+/* Icons */
+import ErrorIcon from "@mui/icons-material/Error";
 
 export default function Home() {
+  const GUIDE_NOT_EXISTS_REFFER = "GUIA NO EXISTE";
   const router = useRouter();
   const [trackingStateConfig, setTrackingStateConfig] = useState("");
 
-  const { loadingTerminals, terminalsListConfig } = useGetTerminalsList();
-  const { trackingInfo, loadingTrackingInfo, handleGetTrackingId } =
-    useGetTrackingInfo();
+  const { loadingTerminals, terminalsListConfig, errorTerminalsList } =
+    useGetTerminalsList();
+  const {
+    trackingInfo,
+    loadingTrackingInfo,
+    handleGetTrackingId,
+    errorTrackingInfo,
+  } = useGetTrackingInfo();
 
-  const { trackingState, loadingTrackingState, handleGetTrackingState } =
-    useObtainTrackingState();
+  const {
+    trackingState,
+    loadingTrackingState,
+    handleGetTrackingState,
+    errorTrackingState,
+  } = useObtainTrackingState();
 
   const { generalInfoConfig, handleConfigGeneralInfo } =
     useConfigGeneralInfoTab();
@@ -92,22 +110,52 @@ export default function Home() {
   }, [trackingInfo]);
 
   const childComplete = () => {
+    const errors: any = [];
+
+    if (errorTerminalsList) errors.push(errorTerminalsList);
+    if (errorTrackingInfo) errors.push(errorTrackingInfo);
+    if (errorTrackingState) errors.push(errorTrackingState);
+
+    if (
+      trackingState?.[0]?.estado?.[0]?.descripcion === GUIDE_NOT_EXISTS_REFFER
+    ) {
+      errors.push("La guía no existe");
+    }
+
     return (
       <Fragment>
-        <TrackingInformation
-          trackingCode={
-            trackingInfo?.guia ? trackingInfo?.guia : "Sin información"
-          }
-          unities={
-            trackingInfo?.total_unidades_declarado
-              ? trackingInfo?.total_unidades_declarado
-              : "Sin información"
-          }
-          macroState={"Abierta"}
-          trackingState={trackingStateConfig}
-        />
-        <TrackingTimeLine trackingStates={trackingState?.[0]?.estado} />
-        <TrackingTabsInfo generalInformation={generalInfoConfig} />
+        {errors?.length > 0 ? (
+          <div>
+            <StyledErrorContainer>
+              <ErrorIcon sx={{ fill: "#0a6bb6" }} />
+              <StyledErrorMessage>
+                Oops, ocurrieron novedades:
+              </StyledErrorMessage>
+            </StyledErrorContainer>
+            <StyledErrorList>
+              {errors?.map((error: string) => (
+                <li>{error}</li>
+              ))}
+            </StyledErrorList>
+          </div>
+        ) : (
+          <Fragment>
+            <TrackingInformation
+              trackingCode={
+                trackingInfo?.guia ? trackingInfo?.guia : "Sin información"
+              }
+              unities={
+                trackingInfo?.total_unidades_declarado
+                  ? trackingInfo?.total_unidades_declarado
+                  : "Sin información"
+              }
+              macroState={"Abierta"}
+              trackingState={trackingStateConfig}
+            />
+            <TrackingTimeLine trackingStates={trackingState?.[0]?.estado} />
+            <TrackingTabsInfo generalInformation={generalInfoConfig} />
+          </Fragment>
+        )}
       </Fragment>
     );
   };

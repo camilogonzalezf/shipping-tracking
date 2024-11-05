@@ -27,14 +27,22 @@ const useGetTrackingInfo = () => {
     (state: RootState) => state.trackingInfo.trackingInfo
   );
 
+  const errorTrackingInfo: any = useSelector(
+    (state: RootState) => state.trackingInfo.error
+  );
+
   const handleGetTrackingId = async (trackingId: any) => {
     return await getTrackingInfo(
       trackingId,
       (trackingInfo: any) => {
         dispatch(getTrackingInfoSuccess(trackingInfo));
       },
-      (error: any) => {
-        dispatch(getTrackingInfoFailed(error));
+      () => {
+        dispatch(
+          getTrackingInfoFailed(
+            "No fue posible obtener la información del envío"
+          )
+        );
       },
       onLoading,
       onLoaded
@@ -45,6 +53,7 @@ const useGetTrackingInfo = () => {
     trackingInfo,
     loadingTrackingInfo,
     handleGetTrackingId,
+    errorTrackingInfo,
   };
 };
 

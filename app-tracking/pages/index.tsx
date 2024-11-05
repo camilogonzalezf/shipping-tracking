@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import dynamic from "next/dynamic";
 
 /* Hooks */
@@ -31,14 +33,37 @@ const Loader = dynamic(() => import("sharedComponents/loader"), {
 });
 
 // Styles
-import { StyledContainerGeneralMenuMobile } from "../styles/pages/styles";
-import { Fragment } from "react";
+import {
+  StyledContainerGeneralMenuMobile,
+  StyledErrorMessage,
+  StyledErrorContainer,
+} from "../styles/pages/styles";
+
+/* Icons */
+import ErrorIcon from "@mui/icons-material/Error";
+
 export default function Home() {
   const router = useRouter();
-  const { loadingTerminals, terminalsListConfig } = useGetTerminalsList();
+  const { loadingTerminals, terminalsListConfig, errorTerminalsList } =
+    useGetTerminalsList();
 
   const handleReturnIndexPage = () => {
     router.push(`/`);
+  };
+
+  const childeComplete = () => {
+    return (
+      <Fragment>
+        {!errorTerminalsList ? (
+          <RequestTrackingSection />
+        ) : (
+          <StyledErrorContainer>
+            <StyledErrorMessage>{errorTerminalsList}</StyledErrorMessage>
+            <ErrorIcon sx={{ fill: "#0a6bb6" }} />
+          </StyledErrorContainer>
+        )}
+      </Fragment>
+    );
   };
 
   return (
@@ -55,7 +80,7 @@ export default function Home() {
           <StyledContainerGeneralMenuMobile>
             <GeneralMenu />
           </StyledContainerGeneralMenuMobile>
-          <ContainerInfo childComponent={<RequestTrackingSection />} />
+          <ContainerInfo childComponent={childeComplete()} />
         </Fragment>
       )}
     </main>
