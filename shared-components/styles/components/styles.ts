@@ -122,6 +122,7 @@ export const StyledContainerListTerminalSelect = styled(Container)`
   border-radius: 4px;
   max-height: 150px;
   overflow-y: auto;
+  z-index: 10;
 `;
 
 export const StyledTerminalSelectOption = styled(Container)`
@@ -242,10 +243,10 @@ export const StyledErrorMessage = styled(ErrorMessage)`
 export const StyledTrackingInformation = styled.div`
   height: 100%;
   width: 100%;
-  padding: 30px 0px 10px 0px;
+  padding: 20px 0px 10px 0px;
 
   @media (max-width: 600px) {
-    padding: 30px 0px 10px 0px;
+    padding: 20px 0px 10px 0px;
   }
 `;
 
@@ -450,4 +451,46 @@ export const StyledState = styled.p`
   font-size: 12px;
   color: #707070;
   font-weight: 600;
+`;
+
+export const StyledContainerTrackingTabsInfo = styled.div`
+  background: #ffffff;
+  box-shadow: 0px 1px 3px #00000029;
+  border-radius: 8px;
+  padding: 28px 44px;
+`;
+
+export const StyledContainerItemsTrackingInfo = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+  }
+`;
+
+export const StyledTrackingItem = styled.div``;
+export const StyledTrackingItemTitle = styled.div`
+  color: #000000de;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+`;
+export const StyledTrackingItemDescription = styled.div`
+  color: #00000099;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 1px;
+`;
+
+export const StyledTrackingItemIcon = styled.div`
+  margin-left: 5px;
+  cursor: pointer;
 `;

@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import useGetTerminalsList from "@/hooks/useGetTerminalsList";
 import useGetTrackingInfo from "@/hooks/useGetTrackingInfo";
 import useObtainTrackingState from "@/hooks/useObtainTrackingState";
+import useConfigGeneralInfoTab from "@/hooks/useConfigGeneralInfoTab";
 
 /* Local Components */
 const ContainerTrackingInfo = dynamic(
@@ -32,9 +33,14 @@ const TrackingTimeLine = dynamic(
     ssr: false,
   }
 );
-
 const TrackingInformation = dynamic(
   () => import("sharedComponents/tracking-info"),
+  {
+    ssr: false,
+  }
+);
+const TrackingTabsInfo = dynamic(
+  () => import("sharedComponents/tracking-tabs-info"),
   {
     ssr: false,
   }
@@ -53,6 +59,9 @@ export default function Home() {
 
   const { trackingState, loadingTrackingState, handleGetTrackingState } =
     useObtainTrackingState();
+
+  const { generalInfoConfig, handleConfigGeneralInfo } =
+    useConfigGeneralInfoTab();
 
   const handleReturnIndexPage = () => {
     router.push(`/`);
@@ -76,6 +85,12 @@ export default function Home() {
     }
   }, [trackingState]);
 
+  useEffect(() => {
+    if (trackingInfo) {
+      handleConfigGeneralInfo(trackingInfo);
+    }
+  }, [trackingInfo]);
+
   const childComplete = () => {
     return (
       <Fragment>
@@ -92,6 +107,7 @@ export default function Home() {
           trackingState={trackingStateConfig}
         />
         <TrackingTimeLine trackingStates={trackingState?.[0]?.estado} />
+        <TrackingTabsInfo generalInformation={generalInfoConfig} />
       </Fragment>
     );
   };

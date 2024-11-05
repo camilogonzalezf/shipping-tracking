@@ -70,3 +70,22 @@ export const trackingStatesLabels = [
     imgUrl: "/img/trackingIcons/return.svg",
   },
 ];
+
+export const tabsLabels = [
+  {
+    id: 0,
+    label: "Información General",
+  },
+  {
+    id: 1,
+    label: "Información de facturación",
+  },
+  {
+    id: 2,
+    label: "Novedades y soluciones",
+  },
+  {
+    id: 3,
+    label: "Información de entrega",
+  },
+];
