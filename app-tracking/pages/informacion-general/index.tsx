@@ -1,63 +1,14 @@
-import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
-/* Local Components */
-const ContainerInfo = dynamic(
-  () => import("../../components/organisms/ContainerInfo"),
-  {
-    ssr: false,
-  }
-);
-
-/* Shared Components */
-const Header = dynamic(() => import("sharedComponents/header"), {
-  ssr: false,
-});
-const GeneralMenu = dynamic(() => import("sharedComponents/general-menu"), {
-  ssr: false,
-});
-
-// Styles
-import { StyledContainerGeneralMenuMobile } from "../../styles/pages/styles";
+/* Hooks */
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const mockTerminals = [
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 2,
-      label: "02-CAL",
-    },
-    {
-      code: 3,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-    {
-      code: 1,
-      label: "01-BOG",
-    },
-  ];
+  const router = useRouter();
 
-  return (
-    <main>
-      <Header personName={"Jhon Doe"} terminals={mockTerminals} />
-      <StyledContainerGeneralMenuMobile>
-        <GeneralMenu />
-      </StyledContainerGeneralMenuMobile>
-      <ContainerInfo childComponent={<div>Index Información general</div>} />
-    </main>
-  );
+  useEffect(() => {
+    router.push(`/`);
+  }, [router]);
+
+  return <main></main>;
 }

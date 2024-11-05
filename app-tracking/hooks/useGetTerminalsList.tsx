@@ -31,13 +31,21 @@ const useGetTerminalsList = () => {
     (state: RootState) => state.terminalsList.terminalsList
   );
 
+  const errorTerminalsList: any = useSelector(
+    (state: RootState) => state.terminalsList.error
+  );
+
   const handleGetTerminalsList = async () => {
     return await getTerminalsList(
       (terminals: any) => {
         dispatch(getTerminalsListSuccess(terminals));
       },
-      (error: any) => {
-        dispatch(getTerminalsListFailed(error));
+      () => {
+        dispatch(
+          getTerminalsListFailed(
+            "No se fue posible cargar la lista de Terminales"
+          )
+        );
       },
       onLoading,
       onLoaded
@@ -56,6 +64,7 @@ const useGetTerminalsList = () => {
   return {
     terminalsListConfig,
     loadingTerminals,
+    errorTerminalsList,
   };
 };
 

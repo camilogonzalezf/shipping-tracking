@@ -27,6 +27,10 @@ const useObtainTrackingState = () => {
     (state: RootState) => state.trackingState.trackingState
   );
 
+  const errorTrackingState: any = useSelector(
+    (state: RootState) => state.trackingState.error
+  );
+
   const handleGetTrackingState = async (params: any) => {
     const body = {
       guias: params,
@@ -36,8 +40,12 @@ const useObtainTrackingState = () => {
       (trackingState: any) => {
         dispatch(getTrackingStateSuccess(trackingState));
       },
-      (error: any) => {
-        dispatch(getTrackingStateFailed(error));
+      () => {
+        dispatch(
+          getTrackingStateFailed(
+            "No fue posible obtener el estado de las remisiones"
+          )
+        );
       },
       onLoading,
       onLoaded
@@ -48,6 +56,7 @@ const useObtainTrackingState = () => {
     trackingState,
     loadingTrackingState,
     handleGetTrackingState,
+    errorTrackingState,
   };
 };
 
