@@ -29,3 +29,8 @@ declare module "sharedComponents/tracking-time-line" {
   const TrackingTimeLine: React.ComponentType<any>;
   export default TrackingTimeLine;
 }
+
+declare module "sharedComponents/tracking-tabs-info" {
+  const TrackingTabsInfo: React.ComponentType<any>;
+  export default TrackingTabsInfo;
+}

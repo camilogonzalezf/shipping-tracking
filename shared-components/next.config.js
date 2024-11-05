@@ -13,6 +13,7 @@ const nextConfig = {
           "./loader": "./components/organisms/Loader.tsx",
           "./keyboard-form": "./components/molecules/KeyBoardEnterForm.tsx",
           "./tracking-time-line": "./components/molecules/TrackingTimeLine.tsx",
+          "./tracking-tabs-info": "./components/molecules/TrackingTabsInfo.tsx",
           "./general-menu": "./components/atoms/GeneralMenu.tsx",
           "./custom-button": "./components/atoms/CustomButton.tsx",
         },
