@@ -100,3 +100,16 @@ Los Test serán ejecutados como `jest --converage`, esto ya esta configurado en 
 #### Cobertura actual de los Tests
 
 ![Test app tracking](https://i.imgur.com/FVpeQzT.jpeg)
+
+## Convención Ramas
+
+- `feature`
+- `fix`
+- `chore`
+- `release`
+
+**ejemplo release:** `release/aaaa-mm-dd-main-from-test`
+
+## Link del video compartiendo generalidades del proyecto
+
+[Ver video en Loom --> Click aquí](https://www.loom.com/share/f57f61d2af5c47dfbef291c84d42832d?sid=fb88fb01-7c40-4055-90c6-b5600a1548ba)
