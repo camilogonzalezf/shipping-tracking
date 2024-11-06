@@ -50,7 +50,7 @@ const RequestTrackingSection = () => {
   };
 
   return (
-    <StyledContainerRequestTracking>
+    <StyledContainerRequestTracking data-testid="request-tracking-form">
       <StyledTitleRequestTracking>
         Selecciona la consulta que quieres realizar
       </StyledTitleRequestTracking>

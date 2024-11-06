@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getTerminalsListSuccess,
   getTerminalsListFailed,
-  resetTerminalsList,
 } from "@/slices/terminalSlice";
 
 /* Store */
@@ -42,9 +41,7 @@ const useGetTerminalsList = () => {
       },
       () => {
         dispatch(
-          getTerminalsListFailed(
-            "No se fue posible cargar la lista de Terminales"
-          )
+          getTerminalsListFailed("No fue posible cargar la lista de Terminales")
         );
       },
       onLoading,
