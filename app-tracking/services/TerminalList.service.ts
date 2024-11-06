@@ -27,6 +27,7 @@ export const getTerminalsList = async (
       handleSuccess(data);
     }
   } catch (error: any) {
+    console.log(error);
     onLoaded();
     handleError();
   }

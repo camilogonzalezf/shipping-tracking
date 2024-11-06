@@ -23,18 +23,10 @@ const trackingState = createSlice({
       state.obtainsTrackingState = false;
       state.error = action.payload;
     },
-    resetTrackingState: (state) => {
-      state.obtainsTrackingState = false;
-      state.trackingState = null;
-      state.error = null;
-    },
   },
 });
 
-export const {
-  getTrackingStateSuccess,
-  getTrackingStateFailed,
-  resetTrackingState,
-} = trackingState.actions;
+export const { getTrackingStateSuccess, getTrackingStateFailed } =
+  trackingState.actions;
 
 export default trackingState.reducer;
