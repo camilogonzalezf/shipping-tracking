@@ -110,8 +110,6 @@ describe("Home page", () => {
       );
     });
 
-    screen.debug();
-
     expect(
       screen.getByText("No fue posible cargar la lista de Terminales") //@ts-ignore
     ).toBeInTheDocument();
