@@ -23,18 +23,10 @@ const terminalsList = createSlice({
       state.obtainsTerminals = false;
       state.error = action.payload;
     },
-    resetTerminalsList: (state) => {
-      state.obtainsTerminals = false;
-      state.terminalsList = [];
-      state.error = null;
-    },
   },
 });
 
-export const {
-  getTerminalsListSuccess,
-  getTerminalsListFailed,
-  resetTerminalsList,
-} = terminalsList.actions;
+export const { getTerminalsListSuccess, getTerminalsListFailed } =
+  terminalsList.actions;
 
 export default terminalsList.reducer;

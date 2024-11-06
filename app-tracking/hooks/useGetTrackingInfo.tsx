@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getTrackingInfoSuccess,
   getTrackingInfoFailed,
-  resetTrackingInfo,
 } from "@/slices/trackingInfoSlice";
 
 /* Store */
